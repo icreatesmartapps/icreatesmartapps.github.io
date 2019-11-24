@@ -24,7 +24,7 @@ if(check == true) {
 
   $.ajax({
                   type: "get",
-                  url: "http://participateme.com/feedback.php",
+                  url: "https://participateme.com/feedback.php",
                   data: {  'name' : $(input[0]).val(), 'email':$(input[1]).val() , 'comment' :'sample'  },
                   datatype : 'JSON',
 
