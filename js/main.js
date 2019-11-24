@@ -45,7 +45,7 @@ if(check == true) {
               });
 
 
-  alert("this is true")
+//  alert("this is true")
 }
 
         return check;
