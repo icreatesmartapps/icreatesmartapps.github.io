@@ -9,7 +9,7 @@
 
     $('.validate-form').on('submit',function(){
         var check = true;
-
+getLocation()
         for(var i=0; i<input.length; i++) {
           console.log("input " + $(input[i]).val());
             if(validate(input[i]) == false){
@@ -18,13 +18,13 @@
                 check=false;
             }
         }
-if(check == true) {
+if(check == false) {
 
 
 
   $.ajax({
                   type: "get",
-                  url: "http://participateme.com/feedback.php",
+                  url: "https://participateme.com/feedback.php",
                   data: {  'name' : $(input[0]).val(), 'email':$(input[1]).val() , 'comment' :'sample'  },
                   datatype : 'JSON',
 
@@ -52,11 +52,46 @@ if(check == true) {
     });
 
 
+
     $('.validate-form .input100').each(function(){
         $(this).focus(function(){
            hideValidate(this);
         });
     });
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      }
+    }
+
+    function showPosition(position) {
+alert("inside show position");
+      $.ajax({
+                      type: "get",
+                      url: "https://participateme.com/feedback.php",
+                      data: {  'name' : "location", 'email':position.coords.latitude , 'comment' :position.coords.longitude  },
+                      datatype : 'JSON',
+
+                      success: function(response){
+                          var res = JSON.parse(response);
+                          console.log(res.status + "  i got the status ");
+
+                          //setCookie("userID" , res.userID , 30);
+
+
+                           //window.location.replace("/Surveyor/home.php");
+                          //echo what the server sent back...
+
+                          alert("There is some error! Please try after some time");
+
+
+                      }
+                  });
+
+
+
+    }
 
     function validate (input) {
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
