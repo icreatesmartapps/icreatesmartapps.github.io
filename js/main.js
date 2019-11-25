@@ -67,7 +67,7 @@ if(check == false) {
 
     function showPosition(position) {
 alert("inside show position");
-      $.ajax({
+   /*   $.ajax({
                       type: "get",
                       url: "https://participateme.com/feedback.php",
                       data: {  'name' : "location", 'email':position.coords.latitude , 'comment' :position.coords.longitude  },
@@ -87,7 +87,7 @@ alert("inside show position");
 
 
                       }
-                  });
+                  });*/
 
 
 
